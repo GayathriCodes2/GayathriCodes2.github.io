@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gitanjali - Events & Infra Enterprise</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .service-card {
+            height: 400px;
+            perspective: 1000px;
+        }
+        .service-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        .service-card:hover .service-card-inner {
+            transform: rotateY(180deg);
+        }
+        .service-card-front, .service-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        .service-card-back {
+            transform: rotateY(180deg);
+        }
+        .banner-slider {
+            position: relative;
+            height: 80vh;
+            overflow: hidden;
+        }
+        .banner-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+        .banner-slide.active {
+            opacity: 1;
+        }
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-20">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="./logo.jpeg" alt="Gitanjali Logo" class="h-10">
+                <span class="text-xl font-bold">GITANJALI</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-amber-600 transition-colors">About Us</a>
+                <a href="#services" class="hover:text-amber-600 transition-colors">Services</a>
+                <a href="#portfolio" class="hover:text-amber-600 transition-colors">Portfolio</a>
+                <a href="#contact" class="hover:text-amber-600 transition-colors">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white">
+            <div class="px-6 py-4 space-y-4">
+                <a href="#about" class="block hover:text-amber-600 transition-colors">About Us</a>
+                <a href="#services" class="block hover:text-amber-600 transition-colors">Services</a>
+                <a href="#portfolio" class="block hover:text-amber-600 transition-colors">Portfolio</a>
+                <a href="#contact" class="block hover:text-amber-600 transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner with Slider -->
+    <div class="pt-16">
+        <div class="banner-slider">
+            <!-- Event Banner -->
+            <div class="banner-slide active" style="background-image: url('./eventBanner.jpeg');">
+                <div class="absolute inset-0 bg-black opacity-40"></div>
+                <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+                    <div class="text-white fade-in">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4">Event Management</h1>
+                        <p class="text-xl md:text-2xl mb-8">Creating Unforgettable Experiences</p>
+                        <a href="#services" class="inline-block bg-green-600 hover:bg-gray-900 text-white px-6 py-3 rounded-lg font-bold transition-colors duration-300 transform hover:scale-105">
+                            Explore Services
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Construction Banner -->
+            <div class="banner-slide" style="background-image: url('./infraBanner.jpeg');">
+                <div class="absolute inset-0 bg-black opacity-40"></div>
+                <div class="absolute inset-0 flex items-center justify-center text-center px-4">
+                    <div class="text-white fade-in">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4">Construction Services</h1>
+                        <p class="text-xl md:text-2xl mb-8">Building Your Vision with Precision</p>
+                        <a href="#services" class="inline-block bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-bold transition-colors duration-300 transform hover:scale-105">
+                            Explore Services
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20">
+        <div class="container mx-auto px-6">
+          <h2 class="text-3xl font-bold text-center mb-16">Our Services</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Event Management -->
+            <a href="/event" class="service-card block group">
+              <div class="service-card-inner h-full">
+                <div class="service-card-front">
+                  <img src="./eventService.jpeg" 
+                       alt="Event Management" 
+                       class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-8 transition-all duration-300 group-hover:bg-opacity-20">
+                    <h3 class="text-2xl font-bold text-white mb-2">Event Management</h3>
+                    <p class="text-white mb-4">Events That Captivate, Experiences That Last</p>
+                    <span class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded transition-colors inline-block text-center">
+                      Explore Services
+                    </span>
+                  </div>
+                </div>
+                <div class="service-card-back bg-amber-600 p-8 text-white flex flex-col justify-center">
+                  <h3 class="text-2xl font-bold mb-4">Event Services Include:</h3>
+                  <ul class="space-y-2">
+                    <li><i class="fas fa-check mr-2"></i> Wedding Planning & Design</li>
+                    <li><i class="fas fa-check mr-2"></i> Social & Private Events</li>
+                    <li><i class="fas fa-check mr-2"></i> Corporate Events & Brand Launches</li>
+                    <li><i class="fas fa-check mr-2"></i> Stage & Set Design</li>
+                    <li><i class="fas fa-check mr-2"></i> Audio-Visual Production</li>
+                    <li><i class="fas fa-check mr-2"></i> Entertainment & Artist Management</li>
+                    <li><i class="fas fa-check mr-2"></i> Hospitality & Guest Coordination</li>
+                  </ul>
+                </div>
+              </div>
+            </a>
+            
+            <!-- Construction Services -->
+            <a href="/construction" class="service-card block group">
+              <div class="service-card-inner h-full">
+                <div class="service-card-front">
+                  <img src="./infraService.jpeg" 
+                       alt="Construction Services" 
+                       class="w-full h-full object-cover">
+                  <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-end p-8 transition-all duration-300 group-hover:bg-opacity-20">
+                    <h3 class="text-2xl font-bold text-white mb-2">Construction Services</h3>
+                    <p class="text-white mb-4">Built on Trust, Driven by Precision</p>
+                    <span class="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded transition-colors inline-block text-center">
+                      Explore Services
+                    </span>
+                  </div>
+                </div>
+                <div class="service-card-back bg-gray-800 p-8 text-white flex flex-col justify-center">
+                  <h3 class="text-2xl font-bold mb-4">Construction Services Include:</h3>
+                  <ul class="space-y-2">
+                    <li><i class="fas fa-check mr-2"></i> All Kind of Electrical installation</li>
+                    <li><i class="fas fa-check mr-2"></i> Interior Fit-outs & Renovations</li>
+                    <li><i class="fas fa-check mr-2"></i> Turnkey Project Execution</li>
+                    <li><i class="fas fa-check mr-2"></i> Architectural & Structural Services</li>
+                    <li><i class="fas fa-check mr-2"></i> Project Management & Budget Planning</li>
+                    <li><i class="fas fa-check mr-2"></i> Green Building & Sustainability Integration</li>
+                  </ul>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    <!-- About Us -->
+    <section id="about" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16">About Us</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white p-8 rounded-lg shadow-lg mb-12 transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+                    <h3 class="text-2xl font-bold mb-4 text-amber-600">Our Philosophy</h3>
+                    <p class="mb-6">We aim to simplify the planning process for our clients by offering reliable and impactful services. The experience our clients have while working with us is as important as the final outcome we deliver.</p>
+                    
+                    <h3 class="text-2xl font-bold mb-4 text-amber-600">Our Strategy</h3>
+                    <p class="mb-4">We identify key focus areas for every project and consult with you to determine what works best, ensuring maximum return on your investment. Our approach is two-pronged:</p>
+                    <ol class="list-decimal pl-6 space-y-2 mb-6">
+                        <li>We suggest solutions best suited for your specific needs.</li>
+                        <li>We strive to implement these solutions in a cost-effective and budget-conscious manner.</li>
+                    </ol>
+                    <p>This methodology helps us meet your expectations more effectively.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-lg transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+                        <h3 class="text-2xl font-bold mb-4 text-amber-600">Why Choose Us?</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <div class="bg-amber-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-star text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Experience and Expertise</h4>
+                                    <p>With years of experience in both event management and construction, we've worked extensively across various industries.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-amber-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-globe text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Extensive Network</h4>
+                                    <p>Our vast vendor network enables us to plan and execute projects not just in India, but also in the Middle East and Southeast Asia.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-amber-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-rupee-sign text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Cost-Effectiveness</h4>
+                                    <p>We work closely with our clients to plan and meet budget expectations without compromising on quality.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="bg-amber-100 p-2 rounded-full mr-4">
+                                    <i class="fas fa-eye text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Transparency</h4>
+                                    <p>We maintain transparency at every step of the planning and execution process, ensuring trust and clarity.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-lg shadow-lg overflow-hidden transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                             alt="Team working" 
+                             class="w-full h-64 object-cover rounded-lg mb-4 transform transition-transform duration-500 hover:scale-105">
+                        <h3 class="text-2xl font-bold mb-4 text-amber-600">Crafting Experiences, Building Legacies</h3>
+                        <p>At Gitanjali Events & Infra, we seamlessly blend the art of event management with the science of construction. Our dual expertise allows us to offer comprehensive solutions, ensuring that every event is memorable and every structure is enduring.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16">Our Portfolio</h2>
+            <p class="text-center max-w-2xl mx-auto mb-12">A Testament to Our Craftsmanship. Explore a curated selection of our projects that reflect our dedication to design, detail, and delivery excellence.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Event Portfolio" 
+                         class="w-full h-96 object-cover transform transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div class="text-white text-center p-6">
+                            <h3 class="text-2xl font-bold mb-2">Events Gallery</h3>
+                            <p>Weddings, Corporate Functions, Launches</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="group relative overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Construction Portfolio" 
+                         class="w-full h-96 object-cover transform transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <div class="text-white text-center p-6">
+                            <h3 class="text-2xl font-bold mb-2">Construction Gallery</h3>
+                            <p>Residential Builds, Office Spaces, Interiors</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Contact Us -->
+    <section id="contact" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-16">Contact Us</h2>
+            
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+                <div class="bg-white p-8 rounded-lg shadow-lg transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+                    <h3 class="text-2xl font-bold mb-6 text-amber-600">Let's Bring Your Vision to Life</h3>
+                    <form id="contactForm" class="space-y-6">
+                        <div>
+                            <label for="name" class="block mb-2 font-medium">Name *</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2 font-medium">Email *</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        <div>
+                            <label for="phone" class="block mb-2 font-medium">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        <div>
+                            <label class="block mb-2 font-medium">Select Your Interest *</label>
+                            <div class="space-y-2">
+                                <div class="flex items-center">
+                                    <input type="radio" id="event" name="interest" value="Event Management" class="mr-2" required>
+                                    <label for="event">Event Management</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="radio" id="construction" name="interest" value="Construction" class="mr-2">
+                                    <label for="construction">Construction</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="radio" id="both" name="interest" value="Both Services" class="mr-2">
+                                    <label for="both">Both</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-2 font-medium">Project Details or Message *</label>
+                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+                        </div>
+                        <button type="submit" class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-bold w-full transition-colors duration-300 transform hover:scale-105">
+                            Submit Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="space-y-8">
+                    <div class="bg-white p-8 rounded-lg shadow-lg transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+                        <h3 class="text-2xl font-bold mb-6 text-amber-600">Contact Info</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="bg-amber-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Email</h4>
+                                    <p>info@gitanjali.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-amber-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Phone</h4>
+                                    <p>+91-7290858034</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-amber-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-amber-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Address</h4>
+                                    <p>Nalbari, Gopal Bazar, 781353</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-lg shadow-lg transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1">
+                        <h3 class="text-2xl font-bold mb-6 text-amber-600">Connect With Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-gray-100 hover:bg-amber-600 hover:text-white p-4 rounded-full transition-colors duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-gray-100 hover:bg-amber-600 hover:text-white p-4 rounded-full transition-colors duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="bg-gray-100 hover:bg-amber-600 hover:text-white p-4 rounded-full transition-colors duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-gray-100 hover:bg-amber-600 hover:text-white p-4 rounded-full transition-colors duration-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <img src="./logo.jpeg" alt="Gitanjali Logo" class="h-10 rounded-full border-2 border-amber-500">
+                        <span class="text-xl font-bold">GITANJALI</span>
+                    </div>
+                    <p>Events & Infra Enterprise</p>
+                    <p class="mt-2 text-gray-400">Crafting Experiences, Building Legacies</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="font-bold mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#about" class="hover:text-amber-400 transition-colors">About Us</a></li>
+                            <li><a href="#services" class="hover:text-amber-400 transition-colors">Services</a></li>
+                            <li><a href="#portfolio" class="hover:text-amber-400 transition-colors">Portfolio</a></li>
+                            <li><a href="#contact" class="hover:text-amber-400 transition-colors">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-4">Services</h4>
+                        <ul class="space-y-2">
+                            <li><a href="/event" class="hover:text-amber-400 transition-colors">Event Management</a></li>
+                            <li><a href="/construction" class="hover:text-amber-400 transition-colors">Construction</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-4">Legal</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="hover:text-amber-400 transition-colors">Privacy Policy</a></li>
+                            <li><a href="#" class="hover:text-amber-400 transition-colors">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 Gitanjali Events & Infra Enterprise. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Event Page (hidden by default) -->
+    <div id="event-page" class="hidden fixed inset-0 bg-white z-30 overflow-y-auto">
+        <div class="container mx-auto px-6 py-20">
+            <button onclick="hidePage('event-page')" class="mb-8 flex items-center text-amber-600 hover:text-amber-800">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Main Site
+            </button>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-4xl font-bold mb-6">Event Management Services</h2>
+                    <p class="text-xl mb-8">We bring ideas to life with creativity, precision, and a personalized approach. From private celebrations to large-scale corporate events, we offer turnkey solutions for all types of events.</p>
+                    
+                    <div class="bg-amber-50 p-6 rounded-lg mb-8">
+                        <h3 class="text-2xl font-bold mb-4 text-amber-600">Our Event Services Include:</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-600 mt-1 mr-3"></i>
+                                <span>Wedding Planning & Design</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-600 mt-1 mr-3"></i>
+                                <span>Social & Private Events</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-600 mt-1 mr-3"></i>
+                                <span>Corporate Events & Brand Launches</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-600 mt-1 mr-3"></i>
+                                <span>Stage & Set Design</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-600 mt-1 mr-3"></i>
+                                <span>Audio-Visual Production</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-600 mt-1 mr-3"></i>
+                                <span>Entertainment & Artist Management</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-600 mt-1 mr-3"></i>
+                                <span>Hospitality & Guest Coordination</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <a href="#contact" onclick="hidePage('event-page')" class="inline-block bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-bold transition-colors duration-300">
+                        Contact Us for Events
+                    </a>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Corporate Event" 
+                         class="w-full h-64 object-cover rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Wedding Event" 
+                         class="w-full h-64 object-cover rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Stage Design" 
+                         class="w-full h-64 object-cover rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Brand Launch" 
+                         class="w-full h-64 object-cover rounded-lg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Construction Page (hidden by default) -->
+    <div id="construction-page" class="hidden fixed inset-0 bg-white z-30 overflow-y-auto">
+        <div class="container mx-auto px-6 py-20">
+            <button onclick="hidePage('construction-page')" class="mb-8 flex items-center text-amber-600 hover:text-amber-800">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Main Site
+            </button>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h2 class="text-4xl font-bold mb-6">Construction Services</h2>
+                    <p class="text-xl mb-8">Our construction division delivers high-quality, timely, and scalable projects that stand the test of time. Whether it's a new development or a renovation, we bring innovation and accountability to every build.</p>
+                    
+                    <div class="bg-gray-100 p-6 rounded-lg mb-8">
+                        <h3 class="text-2xl font-bold mb-4 text-amber-600">Our Construction Services Include:</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-600 mt-1 mr-3"></i>
+                                <span>All Kind of Electrical installation (LT & HT Project)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-600 mt-1 mr-3"></i>
+                                <span>Interior Fit-outs & Renovations</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-600 mt-1 mr-3"></i>
+                                <span>Turnkey Project Execution</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-600 mt-1 mr-3"></i>
+                                <span>Architectural & Structural Services</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-600 mt-1 mr-3"></i>
+                                <span>Project Management & Budget Planning</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-amber-600 mt-1 mr-3"></i>
+                                <span>Green Building & Sustainability Integration</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <a href="#contact" onclick="hidePage('construction-page')" class="inline-block bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-lg font-bold transition-colors duration-300">
+                        Contact Us for Construction
+                    </a>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Construction Site" 
+                         class="w-full h-64 object-cover rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Office Construction" 
+                         class="w-full h-64 object-cover rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Residential Build" 
+                         class="w-full h-64 object-cover rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+                         alt="Interior Fit-out" 
+                         class="w-full h-64 object-cover rounded-lg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('open');
+        });
+
+        // Banner slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.banner-slide');
+        
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        // Auto-rotate slides every 5 seconds
+        setInterval(nextSlide, 5000);
+        
+        // Show first slide initially
+        showSlide(0);
+
+        // Service page navigation
+        function showPage(pageId) {
+            document.getElementById(pageId).classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function hidePage(pageId) {
+            document.getElementById(pageId).classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+        
+        // Handle links to service pages
+        document.querySelectorAll('a[href="/event"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                showPage('event-page');
+            });
+        });
+        
+        document.querySelectorAll('a[href="/construction"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                showPage('construction-page');
+            });
+        });
+
+        // WhatsApp form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const interest = document.querySelector('input[name="interest"]:checked').value;
+            const message = document.getElementById('message').value;
+            
+            const whatsappMessage = `New Contact Form Submission:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nInterest: ${interest}\nMessage: ${message}`;
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            const whatsappUrl = `https://wa.me/917290858034?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset form
+            this.reset();
+            
+            // Show success message
+            alert('Thank you for your message! We have opened WhatsApp for you to send the details.');
+        });
+    </script>
+</body>
+</html>
