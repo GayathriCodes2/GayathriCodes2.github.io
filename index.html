@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gitanjali - Events & Infra Enterprise</title>
+    <title>Gitanjali - Events & Infra</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -72,30 +72,38 @@
     <!-- Navigation -->
     <nav class="bg-white shadow-md fixed w-full z-20">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <img src="./logo.jpeg" alt="Gitanjali Logo" class="h-10">
-                <span class="text-xl font-bold">GITANJALI</span>
+          <div class="flex items-center space-x-3">
+            <img src="./logo.jpeg" alt="Gitanjali Logo" class="h-12 w-12 rounded-full border-2 border-amber-500 object-cover">
+            <div class="flex flex-col leading-tight">
+              <span class="text-xl font-bold text-gray-800">GITANJALI</span>
+              <span class="text-sm font-medium text-amber-600">Events & Infra</span>
             </div>
-            <div class="hidden md:flex space-x-8">
-                <a href="#about" class="hover:text-amber-600 transition-colors">About Us</a>
-                <a href="#services" class="hover:text-amber-600 transition-colors">Services</a>
-                <a href="#portfolio" class="hover:text-amber-600 transition-colors">Portfolio</a>
-                <a href="#contact" class="hover:text-amber-600 transition-colors">Contact</a>
-            </div>
-            <button id="mobile-menu-button" class="md:hidden focus:outline-none">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
+          </div>
+          
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex space-x-8">
+            <a href="#about" class="text-gray-700 hover:text-amber-600 transition-colors duration-300 font-medium py-2">About Us</a>
+            <a href="#services" class="text-gray-700 hover:text-amber-600 transition-colors duration-300 font-medium py-2">Services</a>
+            <a href="#portfolio" class="text-gray-700 hover:text-amber-600 transition-colors duration-300 font-medium py-2">Portfolio</a>
+            <a href="#contact" class="text-gray-700 hover:text-amber-600 transition-colors duration-300 font-medium py-2">Contact</a>
+          </div>
+          
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-button" class="md:hidden focus:outline-none text-gray-700 hover:text-amber-600 transition-colors">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
         </div>
+        
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="mobile-menu md:hidden bg-white">
-            <div class="px-6 py-4 space-y-4">
-                <a href="#about" class="block hover:text-amber-600 transition-colors">About Us</a>
-                <a href="#services" class="block hover:text-amber-600 transition-colors">Services</a>
-                <a href="#portfolio" class="block hover:text-amber-600 transition-colors">Portfolio</a>
-                <a href="#contact" class="block hover:text-amber-600 transition-colors">Contact</a>
-            </div>
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white shadow-lg">
+          <div class="px-6 py-4 space-y-3">
+            <a href="#about" class="block py-3 text-gray-700 hover:text-amber-600 transition-colors duration-300 border-b border-gray-100">About Us</a>
+            <a href="#services" class="block py-3 text-gray-700 hover:text-amber-600 transition-colors duration-300 border-b border-gray-100">Services</a>
+            <a href="#portfolio" class="block py-3 text-gray-700 hover:text-amber-600 transition-colors duration-300 border-b border-gray-100">Portfolio</a>
+            <a href="#contact" class="block py-3 text-gray-700 hover:text-amber-600 transition-colors duration-300">Contact</a>
+          </div>
         </div>
-    </nav>
+      </nav>
 
     <!-- Hero Banner with Slider -->
     <div class="pt-16">
@@ -509,16 +517,16 @@
                 </div>
                 
                 <div class="grid grid-cols-2 gap-4">
-                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                    <img src="./event1.jpeg" 
                          alt="Corporate Event" 
                          class="w-full h-64 object-cover rounded-lg">
-                    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                    <img src="./event2.jpeg" 
                          alt="Wedding Event" 
                          class="w-full h-64 object-cover rounded-lg">
-                    <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                    <img src="./event3.jpeg" 
                          alt="Stage Design" 
                          class="w-full h-64 object-cover rounded-lg">
-                    <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                    <img src="./event4.jpeg" 
                          alt="Brand Launch" 
                          class="w-full h-64 object-cover rounded-lg">
                 </div>
